@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Insights - TL 360</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+            background: white;
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            color: #1d1d1f;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.4px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+        
+        .nav-link.active {
+            font-weight: 600;
+        }
+        
+        .nav-cta {
+            background: #1d1d1f;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Hero */
+        .hero {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 100px 5% 80px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1d1d1f;
+            line-height: 1.07;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: #6e6e73;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        /* Featured Report */
+        .featured-report {
+            background: #f5f5f7;
+            padding: 80px 5%;
+        }
+        
+        .report-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+        
+        .report-visual {
+            background: linear-gradient(135deg, #469f35 0%, #2d6b22 100%);
+            height: 500px;
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 120px;
+            color: white;
+        }
+        
+        .report-content {
+            padding: 40px 0;
+        }
+        
+        .report-tag {
+            font-size: 13px;
+            color: #469f35;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 16px;
+        }
+        
+        .report-title {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            line-height: 1.1;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+        
+        .report-description {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+        
+        .report-highlights {
+            list-style: none;
+            margin-bottom: 40px;
+        }
+        
+        .highlight-item {
+            padding: 12px 0;
+            font-size: 17px;
+            color: #1d1d1f;
+            display: flex;
+            align-items: center;
+        }
+        
+        .highlight-item::before {
+            content: "→";
+            color: #469f35;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        
+        .download-button {
+            display: inline-block;
+            background: #1d1d1f;
+            color: white;
+            padding: 16px 32px;
+            border-radius: 24px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .download-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Section */
+        .section {
+            padding: 80px 5%;
+            background: white;
+        }
+        
+        .section.gray {
+            background: #f5f5f7;
+        }
+        
+        .section-header {
+            max-width: 980px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-tag {
+            font-size: 13px;
+            color: #6e6e73;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.6px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .section-subtitle {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Resources Grid */
+        .resources-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .resource-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .resource-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .resource-image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .resource-image svg {
+            width: 60px;
+            height: 60px;
+        }
+        
+        .resource-content {
+            padding: 32px;
+        }
+        
+        .resource-type {
+            font-size: 11px;
+            color: #469f35;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .resource-title {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+            line-height: 1.2;
+        }
+        
+        .resource-excerpt {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .resource-link {
+            font-size: 15px;
+            color: #469f35;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Newsletter Section */
+        .newsletter-section {
+            background: #1d1d1f;
+            color: white;
+            padding: 80px 5%;
+        }
+        
+        .newsletter-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .newsletter-title {
+            font-size: 40px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            letter-spacing: -0.6px;
+        }
+        
+        .newsletter-description {
+            font-size: 19px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+        }
+        
+        .newsletter-form {
+            display: flex;
+            gap: 16px;
+            max-width: 400px;
+            margin: 0 auto;
+        }
+        
+        .newsletter-input {
+            flex: 1;
+            padding: 14px 20px;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            background: rgba(255,255,255,0.1);
+            color: white;
+        }
+        
+        .newsletter-input::placeholder {
+            color: rgba(255,255,255,0.5);
+        }
+        
+        .newsletter-button {
+            padding: 14px 28px;
+            background: white;
+            color: #1d1d1f;
+            border: none;
+            border-radius: 20px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .newsletter-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Webinars */
+        .webinar-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .webinar-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+        
+        .webinar-date {
+            font-size: 13px;
+            color: #469f35;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .webinar-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+        
+        .webinar-speaker {
+            font-size: 15px;
+            color: #6e6e73;
+            margin-bottom: 20px;
+        }
+        
+        .webinar-description {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 24px;
+        }
+        
+        .register-button {
+            display: inline-block;
+            background: #469f35;
+            color: white;
+            padding: 10px 24px;
+            border-radius: 18px;
+            font-size: 15px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+        }
+        
+        .register-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 0.5px solid rgba(0,0,0,0.06);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            font-size: 13px;
+            color: #6e6e73;
+            text-decoration: none;
+        }
+        
+        .footer-copyright {
+            font-size: 13px;
+            color: #86868b;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1068px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .report-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .resources-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .webinar-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 735px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .report-title {
+                font-size: 36px;
+            }
+            
+            .newsletter-form {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">TL 360</div>
+        <div class="nav-links">
+            <a href="tl360-elite-website.html" class="nav-link">Home</a>
+            <a href="tl360-solutions.html" class="nav-link">Solutions</a>
+            <a href="tl360-methodology.html" class="nav-link">Methodology</a>
+            <a href="#" class="nav-link active">Insights</a>
+            <a href="#" class="nav-link nav-cta">Request Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">Thought leadership in financial wellness.</h1>
+        <p class="hero-subtitle">Research, insights, and perspectives that help HR leaders make informed decisions about employee financial health.</p>
+    </section>
+
+    <!-- Featured Report -->
+    <section class="featured-report">
+        <div class="report-container">
+            <div class="report-visual">
+                <svg viewBox="0 0 24 24" fill="none" width="120" height="120">
+                    <rect x="3" y="3" width="18" height="18" rx="2" stroke="white" stroke-width="2"/>
+                    <path d="M3 9h18M9 21V9" stroke="white" stroke-width="2"/>
+                </svg>
+            </div>
+            <div class="report-content">
+                <div class="report-tag">Annual Report 2025</div>
+                <h2 class="report-title">State of Employee Financial Wellness</h2>
+                <p class="report-description">
+                    Our comprehensive annual study analyzing financial wellness trends across 10,000+ employees in India's leading organizations.
+                </p>
+                <ul class="report-highlights">
+                    <li class="highlight-item">73% of employees report financial stress</li>
+                    <li class="highlight-item">Only 34% are retirement-ready</li>
+                    <li class="highlight-item">₹3.2L average tax optimization gap</li>
+                    <li class="highlight-item">Gen Z shows lowest financial literacy scores</li>
+                </ul>
+                <a href="#" class="download-button">Download Full Report</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- White Papers & Research -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-tag">Research & White Papers</div>
+            <h2 class="section-title">Data-driven insights for strategic decisions.</h2>
+            <p class="section-subtitle">Deep research on the intersection of financial wellness and organizational performance.</p>
+        </div>
+
+        <div class="resources-grid">
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #1d1d1f 0%, #424245 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M3 13h2l3-8 4 16 3-8h2M17 6h2a2 2 0 012 2v1a2 2 0 01-2 2h-2m0-5v5m0 0v6m0 0h-1m1 0h1"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">White Paper</div>
+                    <h3 class="resource-title">ROI of Financial Wellness Programs</h3>
+                    <p class="resource-excerpt">Quantifying the business impact of employee financial education with data from 50+ implementations.</p>
+                    <a href="#" class="resource-link">Download →</a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #469f35 0%, #2d6b22 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">Research Study</div>
+                    <h3 class="resource-title">Income Tax Act 2025: Organizational Readiness</h3>
+                    <p class="resource-excerpt">How India's top companies are preparing their workforce for the biggest tax reform in 64 years.</p>
+                    <a href="#" class="resource-link">Read More →</a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #0066cc 0%, #004499 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">Case Study</div>
+                    <h3 class="resource-title">Tech Sector ESOP Optimization</h3>
+                    <p class="resource-excerpt">How a leading tech company saved ₹28Cr through strategic ESOP education.</p>
+                    <a href="#" class="resource-link">Learn More →</a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #e60000 0%, #990000 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">Research</div>
+                    <h3 class="resource-title">Gen Z Financial Behavior</h3>
+                    <p class="resource-excerpt">Understanding the financial priorities, challenges, and opportunities of India's youngest workforce.</p>
+                    <a href="#" class="resource-link">Explore →</a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #ff6b35 0%, #cc5500 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">Industry Report</div>
+                    <h3 class="resource-title">Financial Stress & Productivity</h3>
+                    <p class="resource-excerpt">The hidden cost of employee financial anxiety on organizational performance.</p>
+                    <a href="#" class="resource-link">Download →</a>
+                </div>
+            </div>
+
+            <div class="resource-card">
+                <div class="resource-image" style="background: linear-gradient(135deg, #6b46c1 0%, #553c9a 100%);">
+                    <svg viewBox="0 0 24 24" fill="none" width="60" height="60">
+                        <path stroke="white" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/>
+                    </svg>
+                </div>
+                <div class="resource-content">
+                    <div class="resource-type">Guide</div>
+                    <h3 class="resource-title">HR's Guide to Financial Wellness</h3>
+                    <p class="resource-excerpt">A practical framework for implementing and measuring financial wellness programs.</p>
+                    <a href="#" class="resource-link">Get Guide →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Upcoming Webinars -->
+    <section class="section gray">
+        <div class="section-header">
+            <div class="section-tag">Upcoming Webinars</div>
+            <h2 class="section-title">Learn from experts and peers.</h2>
+            <p class="section-subtitle">Join our exclusive webinars designed for HR leaders and finance professionals.</p>
+        </div>
+
+        <div class="webinar-grid">
+            <div class="webinar-card">
+                <div class="webinar-date">December 15, 2025 | 3:00 PM IST</div>
+                <h3 class="webinar-title">Navigating Income Tax Act 2025</h3>
+                <p class="webinar-speaker">Speaker: CA Rajesh Khanna, Tax Expert</p>
+                <p class="webinar-description">Essential changes every HR leader needs to communicate to employees about the new tax regime.</p>
+                <a href="#" class="register-button">Register Now</a>
+            </div>
+
+            <div class="webinar-card">
+                <div class="webinar-date">December 22, 2025 | 11:00 AM IST</div>
+                <h3 class="webinar-title">Building Financial Resilience Post-Pandemic</h3>
+                <p class="webinar-speaker">Speaker: Dr. Priya Nair, Behavioral Economist</p>
+                <p class="webinar-description">How organizations can help employees rebuild financial confidence in uncertain times.</p>
+                <a href="#" class="register-button">Register Now</a>
+            </div>
+
+            <div class="webinar-card">
+                <div class="webinar-date">January 8, 2026 | 4:00 PM IST</div>
+                <h3 class="webinar-title">ESOP Optimization Masterclass</h3>
+                <p class="webinar-speaker">Speaker: Amit Shah, Equity Compensation Expert</p>
+                <p class="webinar-description">Advanced strategies for helping employees maximize value from stock compensation.</p>
+                <a href="#" class="register-button">Register Now</a>
+            </div>
+
+            <div class="webinar-card">
+                <div class="webinar-date">January 15, 2026 | 3:00 PM IST</div>
+                <h3 class="webinar-title">Measuring Financial Wellness ROI</h3>
+                <p class="webinar-speaker">Speaker: Sunita Reddy, CHRO Panel</p>
+                <p class="webinar-description">CHROs share their experience measuring and communicating program impact to leadership.</p>
+                <a href="#" class="register-button">Register Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Newsletter Signup -->
+    <section class="newsletter-section">
+        <div class="newsletter-container">
+            <h2 class="newsletter-title">Stay informed.</h2>
+            <p class="newsletter-description">Monthly insights on employee financial wellness delivered to your inbox.</p>
+            <form class="newsletter-form">
+                <input type="email" class="newsletter-input" placeholder="Your email address">
+                <button type="submit" class="newsletter-button">Subscribe</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">About TL 360</a>
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">© 2025 TL 360. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>

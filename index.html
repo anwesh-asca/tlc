@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TL 360 - Strategic Financial Wellness for Leading Organizations</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+            background: white;
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            color: #1d1d1f;
+        }
+        
+        /* Navigation - Enhanced with Dropdown */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.4px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.2s;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+        
+        /* Dropdown Styles */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown-content {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border: 0.5px solid rgba(0,0,0,0.06);
+            border-radius: 12px;
+            padding: 12px 0;
+            margin-top: 12px;
+            min-width: 200px;
+            opacity: 0;
+            visibility: hidden;
+            transition: opacity 0.2s, visibility 0.2s;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        }
+        
+        .nav-dropdown:hover .nav-dropdown-content {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .dropdown-item {
+            display: block;
+            padding: 10px 20px;
+            color: #1d1d1f;
+            font-size: 14px;
+            text-decoration: none;
+            transition: background 0.2s;
+        }
+        
+        .dropdown-item:hover {
+            background: #f5f5f7;
+        }
+        
+        .nav-cta {
+            background: #1d1d1f;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        .nav-cta:hover {
+            opacity: 0.9;
+        }
+        
+        /* Hero Section */
+        .hero {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 100px 5% 80px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1d1d1f;
+            line-height: 1.07;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: #6e6e73;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 80px;
+            margin-top: 60px;
+        }
+        
+        .stat {
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #6e6e73;
+            letter-spacing: -0.1px;
+        }
+        
+        /* Client Logos Section */
+        .clients-section {
+            padding: 60px 5%;
+            background: white;
+            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+        }
+        
+        .clients-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .clients-title {
+            font-size: 13px;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 40px;
+        }
+        
+        .clients-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .client-logo {
+            height: 40px;
+            opacity: 0.4;
+            transition: opacity 0.3s;
+            filter: grayscale(100%);
+        }
+        
+        .client-logo:hover {
+            opacity: 0.7;
+            filter: grayscale(0%);
+        }
+        
+        /* Section Header */
+        .section {
+            padding: 80px 5%;
+            background: white;
+        }
+        
+        .section.gray {
+            background: #f5f5f7;
+        }
+        
+        .section-header {
+            max-width: 980px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-tag {
+            font-size: 13px;
+            color: #6e6e73;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.6px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .section-subtitle {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Life Stage Cards */
+        .stages-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .stage-card {
+            background: white;
+            border-radius: 18px;
+            padding: 60px;
+            margin-bottom: 30px;
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 60px;
+            align-items: start;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .stage-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .stage-left {
+            border-right: 1px solid rgba(0,0,0,0.06);
+            padding-right: 40px;
+        }
+        
+        .stage-icon {
+            width: 60px;
+            height: 60px;
+            background: #f5f5f7;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .stage-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #1d1d1f;
+            stroke-width: 1.5;
+        }
+        
+        .stage-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+        
+        .stage-age {
+            font-size: 17px;
+            color: #86868b;
+            margin-bottom: 20px;
+        }
+        
+        .stage-description {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+        }
+        
+        .stage-right {
+            padding-left: 0;
+        }
+        
+        .stage-modules-title {
+            font-size: 13px;
+            color: #86868b;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        .module-list {
+            list-style: none;
+        }
+        
+        .module-item {
+            padding: 16px 0;
+            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .module-item:last-child {
+            border-bottom: none;
+        }
+        
+        .module-name {
+            font-size: 17px;
+            color: #1d1d1f;
+            font-weight: 500;
+            letter-spacing: -0.2px;
+        }
+        
+        .module-duration {
+            font-size: 14px;
+            color: #86868b;
+        }
+        
+        .advanced-modules {
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 1px solid rgba(0,0,0,0.06);
+        }
+        
+        .advanced-tag {
+            display: inline-block;
+            background: #469f35;
+            color: white;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 16px;
+        }
+        
+        .advanced-list {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.6;
+        }
+        
+        .advanced-list li {
+            margin-bottom: 8px;
+        }
+        
+        /* Partnership Criteria Section */
+        .criteria-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .criteria-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            text-align: center;
+        }
+        
+        .criteria-icon {
+            width: 56px;
+            height: 56px;
+            background: #f5f5f7;
+            border-radius: 14px;
+            margin: 0 auto 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .criteria-title {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -0.3px;
+        }
+        
+        .criteria-description {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+        
+        /* Insights Grid */
+        .insights-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .insight-card {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .insight-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .insight-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 48px;
+            color: white;
+        }
+        
+        .insight-content {
+            padding: 32px;
+        }
+        
+        .insight-tag {
+            font-size: 11px;
+            color: #007aff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .insight-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+            line-height: 1.2;
+        }
+        
+        .insight-excerpt {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        
+        .insight-link {
+            font-size: 15px;
+            color: #007aff;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        /* Methodology Timeline */
+        .timeline {
+            max-width: 980px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 20px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 2px;
+            height: 100%;
+            background: rgba(0,0,0,0.06);
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 60px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
+        
+        .timeline-item:nth-child(even) > * {
+            direction: ltr;
+        }
+        
+        .timeline-dot {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 16px;
+            height: 16px;
+            background: white;
+            border: 2px solid #007aff;
+            border-radius: 50%;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 32px;
+            border-radius: 18px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+        
+        .timeline-phase {
+            font-size: 13px;
+            color: #007aff;
+            text-transform: uppercase;
+            letter-spacing: 0.8px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .timeline-title {
+            font-size: 24px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -0.4px;
+        }
+        
+        .timeline-description {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #1d1d1f;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.7px;
+        }
+        
+        .cta-subtitle {
+            font-size: 21px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            letter-spacing: -0.3px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1d1d1f;
+            padding: 16px 40px;
+            border-radius: 24px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            letter-spacing: -0.2px;
+        }
+        
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 0.5px solid rgba(0,0,0,0.06);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            font-size: 13px;
+            color: #6e6e73;
+            text-decoration: none;
+        }
+        
+        .footer-copyright {
+            font-size: 13px;
+            color: #86868b;
+        }
+        
+        /* Page Transitions */
+        .page-content {
+            display: none;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+        
+        .page-content.active {
+            display: block;
+            opacity: 1;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1068px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .stage-card {
+                grid-template-columns: 1fr;
+                gap: 40px;
+                padding: 40px;
+            }
+            
+            .stage-left {
+                border-right: none;
+                border-bottom: 1px solid rgba(0,0,0,0.06);
+                padding-right: 0;
+                padding-bottom: 30px;
+            }
+            
+            .stage-right {
+                padding-left: 0;
+            }
+            
+            .hero-stats {
+                gap: 40px;
+            }
+            
+            .criteria-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .insights-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline-item {
+                grid-template-columns: 1fr;
+            }
+            
+            .timeline::before {
+                left: 20px;
+            }
+            
+            .timeline-dot {
+                left: 20px;
+            }
+        }
+        
+        @media (max-width: 735px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .section-title {
+                font-size: 32px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+            
+            .stage-card {
+                padding: 30px;
+            }
+            
+            .clients-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation - Restructured for Elite Positioning -->
+    <nav class="nav">
+        <div class="nav-brand">TL 360</div>
+        <div class="nav-links">
+            <div class="nav-dropdown">
+                <a href="#" class="nav-link" onclick="showPage('solutions'); return false;">Solutions</a>
+                <div class="nav-dropdown-content">
+                    <a href="#" class="dropdown-item">By Industry</a>
+                    <a href="#" class="dropdown-item">By Company Size</a>
+                    <a href="#" class="dropdown-item">By Challenge</a>
+                </div>
+            </div>
+            <a href="#" class="nav-link" onclick="showPage('methodology'); return false;">Methodology</a>
+            <a href="#" class="nav-link" onclick="showPage('insights'); return false;">Insights</a>
+            <a href="#" class="nav-link nav-cta" onclick="showPage('consultation'); return false;">Request Demo</a>
+        </div>
+    </nav>
+
+    <!-- Home Page Content -->
+    <div id="home-page" class="page-content active">
+        <!-- Hero -->
+        <section class="hero">
+            <h1 class="hero-title">Financial clarity for every stage of life.</h1>
+            <p class="hero-subtitle">Your employees aren't one-size-fits-all. Neither is their financial education. We personalize learning based on where each person is in their career and life.</p>
+            
+            <div class="hero-stats">
+                <div class="stat">
+                    <div class="stat-number">5</div>
+                    <div class="stat-label">Life Stages</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">25+</div>
+                    <div class="stat-label">Core Modules</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-number">40+</div>
+                    <div class="stat-label">Hours of Content</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Client Logos -->
+        <section class="clients-section">
+            <div class="clients-container">
+                <div class="clients-title">Trusted by Leading Organizations</div>
+                <div class="clients-grid">
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                    <div class="client-logo" style="background: #f5f5f7; height: 40px; border-radius: 8px;"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Life Stages Section -->
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Comprehensive Coverage</div>
+                <h2 class="section-title">From first paycheck to retirement planning.</h2>
+                <p class="section-subtitle">Every employee gets a personalized path based on their age, life situation, and financial complexity. No overwhelming catalogs. Just what they need, when they need it.</p>
+            </div>
+
+            <div class="stages-container">
+                
+                <!-- Stage 1 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                                <circle cx="12" cy="7" r="4"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Starting Out</h3>
+                        <p class="stage-age">Ages 22-28</p>
+                        <p class="stage-description">Your early-career employees learn to manage their first real salary, understand taxation, and build a financial foundation.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Core Topics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Understanding Your First Salary</span>
+                                <span class="module-duration">45 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Tax Filing Made Simple</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Building Your Safety Net</span>
+                                <span class="module-duration">45 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">First Steps in Investing</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Credit Score & Banking</span>
+                                <span class="module-duration">30 min</span>
+                            </li>
+                        </ul>
+                        <div class="advanced-modules">
+                            <span class="advanced-tag">Advanced (For Applicable Employees)</span>
+                            <ul class="advanced-list">
+                                <li>Stock Options for Beginners</li>
+                                <li>Working for Foreign Companies</li>
+                                <li>Freelance Income Taxation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+                                <polyline points="9 22 9 12 15 12 15 22"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Building Wealth</h3>
+                        <p class="stage-age">Ages 28-35</p>
+                        <p class="stage-description">Marriage, home ownership, and serious investing. Your mid-career employees learn to optimize taxes and build long-term wealth.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Core Topics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Marriage & Financial Planning</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Home Purchase Strategy</span>
+                                <span class="module-duration">90 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Investment Portfolio Building</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Insurance Upgrades</span>
+                                <span class="module-duration">40 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Tax Optimization Strategies</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                        </ul>
+                        <div class="advanced-modules">
+                            <span class="advanced-tag">Advanced (For Applicable Employees)</span>
+                            <ul class="advanced-list">
+                                <li>RSU/ESOP Taxation & Planning</li>
+                                <li>Foreign Assets & FEMA Compliance</li>
+                                <li>Property Investment Beyond Home</li>
+                                <li>Angel Investing & Startup ESOPs</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                                <circle cx="9" cy="7" r="4"/>
+                                <path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Growing Family</h3>
+                        <p class="stage-age">Ages 35-45</p>
+                        <p class="stage-description">Children's education, aging parents, and estate planning. Your senior employees balance multiple financial priorities.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Core Topics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Children's Financial Planning</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Advanced Wealth Building</span>
+                                <span class="module-duration">70 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Tax-Efficient Salary Structuring</span>
+                                <span class="module-duration">45 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Estate Planning Fundamentals</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Parents' Healthcare Planning</span>
+                                <span class="module-duration">40 min</span>
+                            </li>
+                        </ul>
+                        <div class="advanced-modules">
+                            <span class="advanced-tag">Advanced (For Applicable Employees)</span>
+                            <ul class="advanced-list">
+                                <li>International Relocation & Taxes</li>
+                                <li>Complex Stock Compensation</li>
+                                <li>Trust & HUF Planning</li>
+                                <li>Second Home/Vacation Property</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Securing Future</h3>
+                        <p class="stage-age">Ages 45-55</p>
+                        <p class="stage-description">Retirement planning intensifies. Your leadership team learns succession, wealth transfer, and legacy planning.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Core Topics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Retirement Corpus Planning</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Succession Planning Deep Dive</span>
+                                <span class="module-duration">70 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Tax Planning for Retirement</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Real Estate & Asset Liquidation</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Insurance Review & Adjustment</span>
+                                <span class="module-duration">40 min</span>
+                            </li>
+                        </ul>
+                        <div class="advanced-modules">
+                            <span class="advanced-tag">Advanced (For Applicable Employees)</span>
+                            <ul class="advanced-list">
+                                <li>Global Assets & Repatriation</li>
+                                <li>Business Succession</li>
+                                <li>Charitable Giving Strategies</li>
+                                <li>Complex Estate Planning</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <circle cx="12" cy="12" r="10"/>
+                                <polyline points="12 6 12 12 16 14"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Transition Planning</h3>
+                        <p class="stage-age">Ages 55+</p>
+                        <p class="stage-description">Retirement execution and legacy finalization. Your retiring employees manage income, healthcare, and estate closure.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Core Topics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Retirement Income Management</span>
+                                <span class="module-duration">60 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Senior Citizen Tax Benefits</span>
+                                <span class="module-duration">45 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Healthcare Cost Management</span>
+                                <span class="module-duration">50 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Estate Finalization</span>
+                                <span class="module-duration">55 min</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Managing Inherited Wealth</span>
+                                <span class="module-duration">40 min</span>
+                            </li>
+                        </ul>
+                        <div class="advanced-modules">
+                            <span class="advanced-tag">Advanced (For Applicable Employees)</span>
+                            <ul class="advanced-list">
+                                <li>International Retirement</li>
+                                <li>Family Office Setup</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <!-- Special Module Highlight -->
+        <section class="section">
+            <div class="section-header">
+                <div class="section-tag">Timely & Relevant</div>
+                <h2 class="section-title">Plus: Income Tax Act 2025 special module.</h2>
+                <p class="section-subtitle">The Income Tax Act is changing for the first time in 64 years. Every employee needs to understand what's different. We've created a dedicated 2-hour module covering all changes and action items for FY 2025-26.</p>
+            </div>
+        </section>
+
+        <!-- Value Prop for HR -->
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Why This Matters</div>
+                <h2 class="section-title">Not just education. Engagement.</h2>
+            </div>
+            
+            <div class="stages-container">
+                <div class="stage-card" style="grid-template-columns: 1fr 1fr 1fr;">
+                    <div style="border-right: 1px solid rgba(0,0,0,0.06); padding-right: 30px;">
+                        <div class="stat-number" style="font-size: 56px; margin-bottom: 12px;">87%</div>
+                        <p style="font-size: 17px; color: #1d1d1f; font-weight: 600; margin-bottom: 8px;">Completion Rate</p>
+                        <p style="font-size: 15px; color: #6e6e73; line-height: 1.5;">Employees complete their personalized modules because the content is relevant to their actual life.</p>
+                    </div>
+                    <div style="border-right: 1px solid rgba(0,0,0,0.06); padding-right: 30px;">
+                        <div class="stat-number" style="font-size: 56px; margin-bottom: 12px;">4.8</div>
+                        <p style="font-size: 17px; color: #1d1d1f; font-weight: 600; margin-bottom: 8px;">Satisfaction Score</p>
+                        <p style="font-size: 15px; color: #6e6e73; line-height: 1.5;">Professional-grade content led by CA + Legal expertise. Not generic MBA theory.</p>
+                    </div>
+                    <div>
+                        <div class="stat-number" style="font-size: 56px; margin-bottom: 12px;">63%</div>
+                        <p style="font-size: 17px; color: #1d1d1f; font-weight: 600; margin-bottom: 8px;">Stress Reduction</p>
+                        <p style="font-size: 15px; color: #6e6e73; line-height: 1.5;">Employees report reduced financial anxiety after completing their relevant modules.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to see it in action?</h2>
+            <p class="cta-subtitle">We'll show you exactly how your employees will experience TL 360.</p>
+            <a href="#" class="cta-button" onclick="showPage('consultation'); return false;">Request a Demo</a>
+        </section>
+    </div>
+
+    <!-- Solutions Page -->
+    <div id="solutions-page" class="page-content">
+        <section class="hero">
+            <h1 class="hero-title">Tailored solutions for complex organizations.</h1>
+            <p class="hero-subtitle">Every industry faces unique financial wellness challenges. We've developed specialized frameworks for each.</p>
+        </section>
+
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Industry Expertise</div>
+                <h2 class="section-title">Deep domain knowledge meets financial excellence.</h2>
+            </div>
+
+            <div class="stages-container">
+                <!-- Technology Sector -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <h3 class="stage-name">Technology</h3>
+                        <p class="stage-description">Stock compensation, international taxation, startup equity—your engineers face complex financial decisions daily.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Specialized Modules</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">ESOP & RSU Optimization</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Foreign Income & FEMA</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Startup Equity Evaluation</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Financial Services -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <h3 class="stage-name">Financial Services</h3>
+                        <p class="stage-description">Your financially sophisticated workforce demands advanced strategies beyond basic literacy.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Specialized Modules</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Alternative Investment Strategies</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Complex Derivative Structures</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">International Portfolio Management</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Manufacturing -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <h3 class="stage-name">Manufacturing</h3>
+                        <p class="stage-description">From shop floor to C-suite, diverse financial literacy needs across organizational levels.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Specialized Modules</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Blue Collar Financial Planning</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Retirement Corpus Building</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Healthcare & Insurance Planning</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Methodology Page -->
+    <div id="methodology-page" class="page-content">
+        <section class="hero">
+            <h1 class="hero-title">A systematic approach to organizational transformation.</h1>
+            <p class="hero-subtitle">Financial wellness isn't a workshop. It's a strategic initiative requiring precision execution.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-tag">Our Process</div>
+                <h2 class="section-title">Four phases. Measurable outcomes.</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 1</div>
+                        <h3 class="timeline-title">Organizational Assessment</h3>
+                        <p class="timeline-description">Deep-dive analysis of employee demographics, compensation structures, and existing financial literacy gaps.</p>
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 2</div>
+                        <h3 class="timeline-title">Curriculum Customization</h3>
+                        <p class="timeline-description">Tailored learning paths designed for your specific industry, roles, and organizational culture.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 3</div>
+                        <h3 class="timeline-title">Precision Delivery</h3>
+                        <p class="timeline-description">Multi-modal engagement through workshops, digital modules, and one-on-one consultations.</p>
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div></div>
+                    <div class="timeline-content">
+                        <div class="timeline-phase">Phase 4</div>
+                        <h3 class="timeline-title">Impact Measurement</h3>
+                        <p class="timeline-description">Quarterly assessments tracking engagement, knowledge retention, and behavioral change.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Differentiators</div>
+                <h2 class="section-title">Why leading organizations choose TL 360.</h2>
+            </div>
+
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <path stroke="#1d1d1f" stroke-width="1.5" d="M12 2L2 7v10c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V7l-10-5z"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">CA + Legal Expertise</h3>
+                    <p class="criteria-description">Not generic content. Every module validated by chartered accountants and legal experts for Indian context.</p>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <path stroke="#1d1d1f" stroke-width="1.5" d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">87% Engagement</h3>
+                    <p class="criteria-description">Industry-leading completion rates because content is personalized, not generic.</p>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <circle cx="12" cy="12" r="10" stroke="#1d1d1f" stroke-width="1.5"/>
+                            <polyline points="12 6 12 12 16 14" stroke="#1d1d1f" stroke-width="1.5"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">Continuous Evolution</h3>
+                    <p class="criteria-description">Quarterly updates reflecting tax changes, market conditions, and regulatory shifts.</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Success Stories Page -->
+    <div id="success-page" class="page-content">
+        <section class="hero">
+            <h1 class="hero-title">Transformative outcomes for progressive organizations.</h1>
+            <p class="hero-subtitle">Real results from our partnerships with India's leading enterprises.</p>
+        </section>
+
+        <section class="section">
+            <div class="stages-container">
+                <!-- Case Study 1 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <rect x="3" y="3" width="18" height="18" rx="2" stroke="#1d1d1f" stroke-width="1.5"/>
+                                <path d="M9 9h6v6H9z" stroke="#1d1d1f" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Global Technology Leader</h3>
+                        <p class="stage-age">12,000 Employees</p>
+                        <p class="stage-description">Transformed ESOP understanding and tax optimization for engineering workforce.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Impact Metrics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Average tax savings per employee</span>
+                                <span class="module-duration">₹2.4L annually</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">ESOP exercise optimization</span>
+                                <span class="module-duration">₹18Cr saved</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Employee satisfaction score</span>
+                                <span class="module-duration">+34 points</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Retention improvement</span>
+                                <span class="module-duration">12% increase</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Case Study 2 -->
+                <div class="stage-card">
+                    <div class="stage-left">
+                        <div class="stage-icon">
+                            <svg viewBox="0 0 24 24" fill="none">
+                                <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#1d1d1f" stroke-width="1.5"/>
+                            </svg>
+                        </div>
+                        <h3 class="stage-name">Leading Financial Institution</h3>
+                        <p class="stage-age">8,500 Employees</p>
+                        <p class="stage-description">Enhanced financial sophistication across retail banking and wealth management divisions.</p>
+                    </div>
+                    <div class="stage-right">
+                        <div class="stage-modules-title">Impact Metrics</div>
+                        <ul class="module-list">
+                            <li class="module-item">
+                                <span class="module-name">Investment participation rate</span>
+                                <span class="module-duration">67% → 91%</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Retirement readiness score</span>
+                                <span class="module-duration">+42% improvement</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Financial stress reduction</span>
+                                <span class="module-duration">71% reported</span>
+                            </li>
+                            <li class="module-item">
+                                <span class="module-name">Program completion rate</span>
+                                <span class="module-duration">94%</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Recognition</div>
+                <h2 class="section-title">Industry acknowledgment.</h2>
+            </div>
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <h3 class="criteria-title">Best L&D Initiative 2024</h3>
+                    <p class="criteria-description">Economic Times Human Capital Awards</p>
+                </div>
+                <div class="criteria-card">
+                    <h3 class="criteria-title">Innovation in Employee Wellness</h3>
+                    <p class="criteria-description">SHRM India Excellence Awards</p>
+                </div>
+                <div class="criteria-card">
+                    <h3 class="criteria-title">Top 10 HR Tech Solution</h3>
+                    <p class="criteria-description">People Matters TechHR 2024</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Insights Page -->
+    <div id="insights-page" class="page-content">
+        <section class="hero">
+            <h1 class="hero-title">Thought leadership in financial wellness.</h1>
+            <p class="hero-subtitle">Research, insights, and perspectives shaping the future of employee financial health.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-tag">Latest Research</div>
+                <h2 class="section-title">Data-driven insights for strategic decisions.</h2>
+            </div>
+
+            <div class="insights-grid">
+                <div class="insight-card">
+                    <div class="insight-image">📊</div>
+                    <div class="insight-content">
+                        <div class="insight-tag">Annual Report</div>
+                        <h3 class="insight-title">State of Employee Financial Wellness 2025</h3>
+                        <p class="insight-excerpt">Comprehensive analysis of financial stress, literacy gaps, and organizational impact across 10,000+ employees.</p>
+                        <a href="#" class="insight-link">Download Report →</a>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-image">💡</div>
+                    <div class="insight-content">
+                        <div class="insight-tag">White Paper</div>
+                        <h3 class="insight-title">ROI of Financial Wellness Programs</h3>
+                        <p class="insight-excerpt">Quantifying the impact: How financial education drives retention, productivity, and bottom-line results.</p>
+                        <a href="#" class="insight-link">Read More →</a>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-image">🎯</div>
+                    <div class="insight-content">
+                        <div class="insight-tag">Case Study</div>
+                        <h3 class="insight-title">Income Tax Act 2025: Organizational Readiness</h3>
+                        <p class="insight-excerpt">How leading companies are preparing their workforce for the biggest tax reform in 64 years.</p>
+                        <a href="#" class="insight-link">Learn More →</a>
+                    </div>
+                </div>
+
+                <div class="insight-card">
+                    <div class="insight-image">🔍</div>
+                    <div class="insight-content">
+                        <div class="insight-tag">Research</div>
+                        <h3 class="insight-title">Gen Z Financial Behavior Study</h3>
+                        <p class="insight-excerpt">Understanding the financial priorities and challenges of India's youngest workforce.</p>
+                        <a href="#" class="insight-link">Explore Findings →</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Executive Roundtables</div>
+                <h2 class="section-title">Join the conversation.</h2>
+                <p class="section-subtitle">Quarterly gatherings of CHROs and CFOs discussing the intersection of financial wellness and organizational performance.</p>
+            </div>
+        </section>
+    </div>
+
+    <!-- Consultation Page -->
+    <div id="consultation-page" class="page-content">
+        <section class="hero">
+            <h1 class="hero-title">Let's explore a partnership.</h1>
+            <p class="hero-subtitle">We work with 12 new enterprises annually. Each partnership is carefully evaluated for mutual fit.</p>
+        </section>
+
+        <section class="section">
+            <div class="section-header">
+                <div class="section-tag">Partnership Criteria</div>
+                <h2 class="section-title">Is your organization ready?</h2>
+            </div>
+
+            <div class="criteria-grid">
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <path stroke="#1d1d1f" stroke-width="1.5" d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8zM23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">Scale</h3>
+                    <p class="criteria-description">Minimum 500 employees to ensure program viability and impact measurement.</p>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <path stroke="#1d1d1f" stroke-width="1.5" d="M22 11.08V12a10 10 0 1 1-5.93-9.14M22 4L12 14.01l-3-3"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">Commitment</h3>
+                    <p class="criteria-description">Leadership buy-in and dedicated resources for 12-month transformation journey.</p>
+                </div>
+
+                <div class="criteria-card">
+                    <div class="criteria-icon">
+                        <svg viewBox="0 0 24 24" fill="none" width="28" height="28">
+                            <path stroke="#1d1d1f" stroke-width="1.5" d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/>
+                        </svg>
+                    </div>
+                    <h3 class="criteria-title">Innovation</h3>
+                    <p class="criteria-description">Progressive mindset toward employee wellness and organizational development.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="section gray">
+            <div class="section-header">
+                <div class="section-tag">Next Steps</div>
+                <h2 class="section-title">Our consultation process.</h2>
+            </div>
+
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Initial Discussion</h3>
+                        <p class="timeline-description">30-minute call with our partnership team to understand your organization's context and objectives.</p>
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Organizational Assessment</h3>
+                        <p class="timeline-description">Half-day workshop with your HR and Finance leadership to map current state and opportunities.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Custom Proposal</h3>
+                        <p class="timeline-description">Detailed program design with investment levels, timelines, and expected outcomes.</p>
+                    </div>
+                    <div></div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="timeline-dot"></div>
+                    <div></div>
+                    <div class="timeline-content">
+                        <h3 class="timeline-title">Partnership Decision</h3>
+                        <p class="timeline-description">Mutual evaluation of fit and formal engagement structure.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 class="cta-title">Ready to transform your organization?</h2>
+            <p class="cta-subtitle">Begin with a confidential consultation.</p>
+            <a href="/cdn-cgi/l/email-protection#6f1f0e1d1b010a1d1c07061f1c2f1b035c595f410601" class="cta-button">Contact Partnership Team</a>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">About TL 360</a>
+            <a href="#" class="footer-link">Leadership</a>
+            <a href="#" class="footer-link">Careers</a>
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+        </div>
+        <div class="footer-copyright">© 2025 TL 360. Strategic Financial Wellness Partner.</div>
+    </footer>
+
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        // Simple page navigation
+        function showPage(page) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(p => {
+                p.classList.remove('active');
+            });
+            
+            // Show selected page
+            let pageId = page + '-page';
+            let selectedPage = document.getElementById(pageId);
+            
+            // If page doesn't exist, show home
+            if (!selectedPage) {
+                selectedPage = document.getElementById('home-page');
+            }
+            
+            selectedPage.classList.add('active');
+            
+            // S
