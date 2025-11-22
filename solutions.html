@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solutions - TL 360</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=SF+Pro+Display:wght@300;400;500;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', system-ui, sans-serif;
+            background: white;
+            line-height: 1.47059;
+            -webkit-font-smoothing: antialiased;
+            color: #1d1d1f;
+        }
+        
+        /* Navigation */
+        .nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 5%;
+            background: rgba(255,255,255,0.98);
+            backdrop-filter: blur(20px);
+            border-bottom: 0.5px solid rgba(0,0,0,0.06);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .nav-brand {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            letter-spacing: -0.4px;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .nav-link {
+            font-size: 14px;
+            color: #1d1d1f;
+            text-decoration: none;
+            font-weight: 400;
+            transition: opacity 0.2s;
+        }
+        
+        .nav-link:hover {
+            opacity: 0.7;
+        }
+        
+        .nav-link.active {
+            font-weight: 600;
+        }
+        
+        .nav-cta {
+            background: #1d1d1f;
+            color: white;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        /* Hero */
+        .hero {
+            max-width: 980px;
+            margin: 0 auto;
+            padding: 100px 5% 80px;
+            text-align: center;
+        }
+        
+        .hero-title {
+            font-size: 56px;
+            font-weight: 700;
+            color: #1d1d1f;
+            line-height: 1.07;
+            letter-spacing: -0.8px;
+            margin-bottom: 20px;
+        }
+        
+        .hero-subtitle {
+            font-size: 24px;
+            font-weight: 400;
+            color: #6e6e73;
+            line-height: 1.4;
+            letter-spacing: -0.3px;
+            max-width: 700px;
+            margin: 0 auto 50px;
+        }
+        
+        /* Section */
+        .section {
+            padding: 80px 5%;
+            background: white;
+        }
+        
+        .section.gray {
+            background: #f5f5f7;
+        }
+        
+        .section-header {
+            max-width: 980px;
+            margin: 0 auto 60px;
+            text-align: center;
+        }
+        
+        .section-tag {
+            font-size: 13px;
+            color: #6e6e73;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+        
+        .section-title {
+            font-size: 40px;
+            font-weight: 700;
+            color: #1d1d1f;
+            letter-spacing: -0.6px;
+            margin-bottom: 16px;
+            line-height: 1.1;
+        }
+        
+        .section-subtitle {
+            font-size: 19px;
+            color: #6e6e73;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        /* Industry Cards */
+        .industry-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+        }
+        
+        .industry-card {
+            background: white;
+            border-radius: 18px;
+            padding: 60px;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .industry-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(0,0,0,0.1);
+        }
+        
+        .industry-icon {
+            width: 60px;
+            height: 60px;
+            background: #f5f5f7;
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 24px;
+        }
+        
+        .industry-icon svg {
+            width: 32px;
+            height: 32px;
+            stroke: #1d1d1f;
+            stroke-width: 1.5;
+        }
+        
+        .industry-name {
+            font-size: 32px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            letter-spacing: -0.5px;
+        }
+        
+        .industry-description {
+            font-size: 17px;
+            color: #6e6e73;
+            line-height: 1.5;
+            letter-spacing: -0.2px;
+            margin-bottom: 30px;
+        }
+        
+        .industry-features {
+            list-style: none;
+            margin-top: 30px;
+            padding-top: 30px;
+            border-top: 0.5px solid rgba(0,0,0,0.06);
+        }
+        
+        .industry-feature {
+            padding: 12px 0;
+            font-size: 15px;
+            color: #1d1d1f;
+            display: flex;
+            align-items: center;
+        }
+        
+        .industry-feature::before {
+            content: "✓";
+            color: #469f35;
+            font-weight: 600;
+            margin-right: 12px;
+        }
+        
+        /* Company Size Section */
+        .size-cards {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+        }
+        
+        .size-card {
+            background: white;
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+        }
+        
+        .size-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: #1d1d1f;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+        
+        .size-label {
+            font-size: 21px;
+            font-weight: 600;
+            color: #1d1d1f;
+            margin-bottom: 16px;
+            letter-spacing: -0.3px;
+        }
+        
+        .size-description {
+            font-size: 15px;
+            color: #6e6e73;
+            line-height: 1.5;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: #1d1d1f;
+            color: white;
+            padding: 100px 5%;
+            text-align: center;
+        }
+        
+        .cta-title {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            letter-spacing: -0.7px;
+        }
+        
+        .cta-subtitle {
+            font-size: 21px;
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 40px;
+            letter-spacing: -0.3px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background: white;
+            color: #1d1d1f;
+            padding: 16px 40px;
+            border-radius: 24px;
+            font-size: 17px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: opacity 0.2s;
+            letter-spacing: -0.2px;
+        }
+        
+        .cta-button:hover {
+            opacity: 0.9;
+        }
+        
+        /* Footer */
+        .footer {
+            padding: 40px 5%;
+            text-align: center;
+            border-top: 0.5px solid rgba(0,0,0,0.06);
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+        
+        .footer-link {
+            font-size: 13px;
+            color: #6e6e73;
+            text-decoration: none;
+        }
+        
+        .footer-copyright {
+            font-size: 13px;
+            color: #86868b;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1068px) {
+            .hero-title {
+                font-size: 48px;
+            }
+            
+            .industry-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .size-cards {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 735px) {
+            .hero-title {
+                font-size: 36px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .industry-card {
+                padding: 30px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-brand">TL 360</div>
+        <div class="nav-links">
+            <a href="index.html" class="nav-link">Home</a>
+            <a href="#" class="nav-link active">Solutions</a>
+            <a href="methodology.html" class="nav-link">Methodology</a>
+            <a href="insights.html" class="nav-link">Insights</a>
+            <a href="#" class="nav-link nav-cta">Request Demo</a>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero">
+        <h1 class="hero-title">Tailored solutions for every organization.</h1>
+        <p class="hero-subtitle">We understand that each industry and company size has unique financial wellness challenges. Our programs adapt to your specific needs.</p>
+    </section>
+
+    <!-- Industry Solutions -->
+    <section class="section gray">
+        <div class="section-header">
+            <div class="section-tag">Industry Expertise</div>
+            <h2 class="section-title">Deep understanding of your sector's challenges.</h2>
+            <p class="section-subtitle">Years of experience across industries has helped us develop specialized modules that address the real financial challenges your employees face.</p>
+        </div>
+
+        <div class="industry-grid">
+            <!-- Technology -->
+            <div class="industry-card">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <rect x="2" y="3" width="20" height="14" rx="2" stroke="#1d1d1f"/>
+                        <path d="M8 21h8M12 17v4" stroke="#1d1d1f"/>
+                    </svg>
+                </div>
+                <h3 class="industry-name">Technology</h3>
+                <p class="industry-description">Your engineers and tech professionals face complex compensation structures unique to the industry.</p>
+                <ul class="industry-features">
+                    <li class="industry-feature">ESOP & RSU taxation and optimization</li>
+                    <li class="industry-feature">Foreign income and FEMA compliance</li>
+                    <li class="industry-feature">Startup equity evaluation</li>
+                    <li class="industry-feature">International relocation planning</li>
+                    <li class="industry-feature">Cryptocurrency taxation</li>
+                </ul>
+            </div>
+
+            <!-- Financial Services -->
+            <div class="industry-card">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6" stroke="#1d1d1f"/>
+                    </svg>
+                </div>
+                <h3 class="industry-name">Financial Services</h3>
+                <p class="industry-description">Your financially sophisticated workforce needs advanced strategies beyond basic literacy.</p>
+                <ul class="industry-features">
+                    <li class="industry-feature">Alternative investment strategies</li>
+                    <li class="industry-feature">Complex derivative structures</li>
+                    <li class="industry-feature">International portfolio management</li>
+                    <li class="industry-feature">Private equity and hedge funds</li>
+                    <li class="industry-feature">Wealth preservation strategies</li>
+                </ul>
+            </div>
+
+            <!-- Manufacturing -->
+            <div class="industry-card">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M3 21h18M5 21V7l8-4v18M13 21V7l8 4v10" stroke="#1d1d1f"/>
+                    </svg>
+                </div>
+                <h3 class="industry-name">Manufacturing</h3>
+                <p class="industry-description">From shop floor to C-suite, we address diverse financial literacy needs across all levels.</p>
+                <ul class="industry-features">
+                    <li class="industry-feature">Blue collar financial planning</li>
+                    <li class="industry-feature">Shift allowance optimization</li>
+                    <li class="industry-feature">Retirement corpus building</li>
+                    <li class="industry-feature">Healthcare and insurance planning</li>
+                    <li class="industry-feature">Children's education funding</li>
+                </ul>
+            </div>
+
+            <!-- Healthcare -->
+            <div class="industry-card">
+                <div class="industry-icon">
+                    <svg viewBox="0 0 24 24" fill="none">
+                        <path d="M22 12h-4l-3 9L9 3l-3 9H2" stroke="#1d1d1f"/>
+                    </svg>
+                </div>
+                <h3 class="industry-name">Healthcare</h3>
+                <p class="industry-description">Healthcare professionals have unique income patterns and regulatory considerations.</p>
+                <ul class="industry-features">
+                    <li class="industry-feature">Professional indemnity planning</li>
+                    <li class="industry-feature">Private practice taxation</li>
+                    <li class="industry-feature">Medical equipment financing</li>
+                    <li class="industry-feature">Consultant income structuring</li>
+                    <li class="industry-feature">International conference benefits</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Company Size Solutions -->
+    <section class="section">
+        <div class="section-header">
+            <div class="section-tag">Scalable Programs</div>
+            <h2 class="section-title">Right-sized for your organization.</h2>
+            <p class="section-subtitle">Our programs scale elegantly from growing startups to established enterprises.</p>
+        </div>
+
+        <div class="size-cards">
+            <div class="size-card">
+                <div class="size-number">500-2000</div>
+                <div class="size-label">Growth Stage</div>
+                <p class="size-description">Foundational financial wellness with focus on young workforce needs. Digital-first delivery with quarterly workshops.</p>
+            </div>
+            
+            <div class="size-card">
+                <div class="size-number">2000-10000</div>
+                <div class="size-label">Mid-Market</div>
+                <p class="size-description">Comprehensive life-stage programs with dedicated support. Mix of digital, workshops, and one-on-one consultations.</p>
+            </div>
+            
+            <div class="size-card">
+                <div class="size-number">10000+</div>
+                <div class="size-label">Enterprise</div>
+                <p class="size-description">Fully customized programs with executive tracks. White-glove service with quarterly business reviews.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenge-Based Solutions -->
+    <section class="section gray">
+        <div class="section-header">
+            <div class="section-tag">Common Challenges</div>
+            <h2 class="section-title">Solutions for your specific pain points.</h2>
+        </div>
+
+        <div class="industry-grid">
+            <div class="industry-card">
+                <h3 class="industry-name" style="font-size: 24px;">High Attrition in Young Employees</h3>
+                <p class="industry-description">Build financial confidence and long-term thinking in your early-career workforce to improve retention.</p>
+            </div>
+            
+            <div class="industry-card">
+                <h3 class="industry-name" style="font-size: 24px;">Complex Compensation Structures</h3>
+                <p class="industry-description">Help employees understand and optimize ESOPs, RSUs, bonuses, and variable pay components.</p>
+            </div>
+            
+            <div class="industry-card">
+                <h3 class="industry-name" style="font-size: 24px;">Financial Stress Impacting Productivity</h3>
+                <p class="industry-description">Address money worries that affect focus and performance with practical, actionable guidance.</p>
+            </div>
+            
+            <div class="industry-card">
+                <h3 class="industry-name" style="font-size: 24px;">Retirement Readiness Gap</h3>
+                <p class="industry-description">Ensure your senior employees are financially prepared for retirement with comprehensive planning.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="cta-title">Let's discuss your specific needs.</h2>
+        <p class="cta-subtitle">Every organization is unique. We'll design a program that fits perfectly.</p>
+        <a href="#" class="cta-button">Schedule a Consultation</a>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-links">
+            <a href="#" class="footer-link">About TL 360</a>
+            <a href="#" class="footer-link">Privacy</a>
+            <a href="#" class="footer-link">Terms</a>
+            <a href="#" class="footer-link">Contact</a>
+        </div>
+        <div class="footer-copyright">© 2025 TL 360. All rights reserved.</div>
+    </footer>
+
+</body>
+</html>
